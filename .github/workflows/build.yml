@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   pull_request:
     branches:
-      - master
+      - main
 env:
   OMP_NUM_THREADS: '10'
   MKL_THREADING_LAYER: GNU
