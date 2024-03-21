@@ -68,11 +68,14 @@ runs:
       run: |
         cd build/faiss/python
         sudo python setup.py install
+    - name: Install pytest
+      shell: bash
+      run: |
+        conda install -y pytest
     - name: Python tests (CPU only)
       if: inputs.gpu == 'OFF'
       shell: bash
       run: |
-        conda install -y pytest
         conda install -y -q pytorch -c pytorch
         pytest --junitxml=test-results/pytest/results.xml tests/test_*.py
         pytest --junitxml=test-results/pytest/results-torch.xml tests/torch_*.py
