@@ -72,6 +72,7 @@ runs:
       if: inputs.gpu == 'OFF'
       shell: bash
       run: |
+        conda install -y pytest
         conda install -y -q pytorch -c pytorch
         pytest --junitxml=test-results/pytest/results.xml tests/test_*.py
         pytest --junitxml=test-results/pytest/results-torch.xml tests/torch_*.py
