@@ -19,7 +19,10 @@ runs:
   using: composite
   steps:
     - name: Setup miniconda
-      uses: conda-incubator/setup-miniconda@v2
+      uses: conda-incubator/setup-miniconda@v3.0.3
+      with:
+        auto-activate-base: true
+        activate-environment: ""
     - name: Set up environment
       shell: bash
       run: |
@@ -65,8 +68,8 @@ runs:
         make -C build test
     - name: Install Python extension
       shell: bash
+      working-directory: build/faiss/python
       run: |
-        cd build/faiss/python
         sudo python setup.py install
     - name: Install pytest
       shell: bash
