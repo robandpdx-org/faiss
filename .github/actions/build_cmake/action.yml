@@ -67,7 +67,7 @@ runs:
       shell: bash
       run: |
         cd build/faiss/python
-        python setup.py install
+        sudo python setup.py install
     - name: Python tests (CPU only)
       if: inputs.gpu == 'OFF'
       shell: bash
