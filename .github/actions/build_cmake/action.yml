@@ -72,6 +72,7 @@ runs:
       shell: bash
       run: |
         conda install -y pytest
+        echo "$CONDA/bin" >> $GITHUB_PATH
     - name: Python tests (CPU only)
       if: inputs.gpu == 'OFF'
       shell: bash
