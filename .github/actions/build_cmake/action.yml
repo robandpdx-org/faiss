@@ -54,7 +54,7 @@ runs:
               -DFAISS_ENABLE_RAFT=${{ inputs.raft }} \
               -DFAISS_OPT_LEVEL=${{ inputs.opt_level }} \
               -DFAISS_ENABLE_C_API=ON \
-              -DPYTHON_EXECUTABLE=$(which python) \
+              -DPYTHON_EXECUTABLE=$CONDA/bin/python \
               -DCMAKE_BUILD_TYPE=Release \
               -DBLA_VENDOR=Intel10_64_dyn \
               -DCMAKE_CUDA_FLAGS="-gencode arch=compute_75,code=sm_75" \
@@ -69,7 +69,7 @@ runs:
       shell: bash
       working-directory: build/faiss/python
       run: |
-        python setup.py install
+        $CONDA/bin/python setup.py install
     - name: Install pytest
       shell: bash
       run: |
@@ -96,8 +96,8 @@ runs:
       if: inputs.opt_level == 'avx2'
       shell: bash
       run: |
-        FAISS_DISABLE_CPU_FEATURES=AVX2 LD_DEBUG=libs python -c "import faiss" 2>&1 | grep faiss.so
-        LD_DEBUG=libs python -c "import faiss" 2>&1 | grep faiss_avx2.so
+        FAISS_DISABLE_CPU_FEATURES=AVX2 LD_DEBUG=libs $CONDA/bin/python -c "import faiss" 2>&1 | grep faiss.so
+        LD_DEBUG=libs $CONDA/bin/python -c "import faiss" 2>&1 | grep faiss_avx2.so
     - name: Upload test results
       uses: actions/upload-artifact@v4.3.1
       with:
