@@ -1,8 +1,5 @@
 name: Build cmake
 inputs:
-  exec: 
-    description: 'The cmake command to execute'
-    required: true
   opt_level:
     description: 'The optimization level'
     required: false
