@@ -69,7 +69,7 @@ runs:
       shell: bash
       working-directory: build/faiss/python
       run: |
-        sudo python setup.py install
+        python setup.py install
     - name: Install pytest
       shell: bash
       run: |
