@@ -98,5 +98,5 @@ runs:
     - name: Upload test results
       uses: actions/upload-artifact@v4.3.1
       with:
-        name: test-results
+        name: test-results-${{ inputs.opt_level }}-${{ inputs.gpu }}-${{ inputs.raft }}
         path: test-results
