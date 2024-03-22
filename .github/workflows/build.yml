@@ -51,7 +51,7 @@ jobs:
         with:
           opt_level: avx512
   linux-x86_64-GPU-cmake:
-    needs: linux-x86_64-AVX2-cmake
+    #needs: linux-x86_64-AVX2-cmake
     runs-on: 4-core-gpu
     steps:
       - name: Checkout
@@ -60,7 +60,7 @@ jobs:
         with:
           gpu: ON
   linux-x86_64-GPU-w-RAFT-cmake:
-    needs: linux-x86_64-GPU-cmake
+    #needs: linux-x86_64-GPU-cmake
     runs-on: 4-core-gpu
     steps:
       - name: Checkout
@@ -69,3 +69,9 @@ jobs:
         with:
           gpu: ON
           raft: ON
+  linux-x86_64-conda:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - uses: ./.github/actions/build_conda
