@@ -28,7 +28,7 @@ runs:
       shell: bash
       id: choose_shell
       run: |
-        # if runner.os != 'Windows' use bash
+        # if runner.os != 'Windows' use bash, else use pwsh
         if [ "${{ runner.os }}" != "Windows" ]; then
           echo "shell=bash" >> "$GITHUB_OUTPUT"
         else
