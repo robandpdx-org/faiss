@@ -50,13 +50,6 @@ runs:
       run: |
         conda install -y -q anaconda-client
         conda config --set anaconda_upload yes
-    - name: Install CUDA toolkit
-      if: inputs.cuda != ''
-      uses: Jimver/cuda-toolkit@v0.2.14
-      with:
-        cuda: ${{ inputs.cuda }}
-        use-github-cache: false
-        use-local-cache: false
     - name: Conda build (CPU)
       if: inputs.label == '' && inputs.cuda == ''
       shell: ${{ steps.choose_shell.outputs.shell }}
